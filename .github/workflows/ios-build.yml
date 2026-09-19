@@ -1,0 +1,25 @@
+name: Build PWA to iOS Wrapper
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Build Web App Artifacts
+        run: |
+          echo "Generando archivos de envoltura para iOS..."
+          mkdir -p ios-output
+          cp -r * ios-output/
+          
+      - name: Upload iOS Package Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Santana-XIT-iOS
+          path: ios-output/
