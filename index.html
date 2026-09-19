@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SANTANA XIT | Panel Pro & Resellers</title>
+    <style>
+        :root {
+            --bg-dark: #0f0f13;
+            --bg-card: rgba(255, 255, 255, 0.07);
+            --border-card: rgba(255, 255, 255, 0.18);
+            --text-main: #ffffff;
+            --text-muted: #a0a0a7;
+            --accent-active: #00e676;
+            --accent-danger: #ff5252;
+            --accent-primary: #7c4dff;
+            --accent-reseller: #00bcd4;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px 20px 110px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--border-card);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            margin-bottom: 20px;
+        }
+
+        .header-area {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .os-pro {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .project-x {
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(124, 77, 255, 0.5);
+        }
+
+        .mod-title {
+            font-size: 15px;
+            color: var(--text-muted);
+            font-weight: normal;
+            margin-top: 5px;
+        }
+
+        .mods-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mod-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .mod-item:last-child { border-bottom: none; }
+
+        .mod-label {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #4c4c52;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--accent-active);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+
+        .membership-section, .admin-section, .reseller-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mem-header {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            color: var(--accent-active);
+        }
+
+        .admin-header {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            color: #b388ff;
+        }
+
+        .reseller-header {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            color: var(--accent-reseller);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .info-value {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .status-active {
+            color: var(--accent-active);
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-card);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 14px;
+            outline: none;
+            margin-top: 5px;
+        }
+
+        .action-btn {
+            width: 100%;
+            background-color: rgba(255, 82, 82, 0.15);
+            color: var(--accent-danger);
+            border: 1px solid var(--accent-danger);
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 5px;
+        }
+
+        .primary-btn {
+            background-color: rgba(124, 77, 255, 0.2);
+            color: #b388ff;
+            border: 1px solid var(--accent-primary);
+        }
+
+        .reseller-btn {
+            background-color: rgba(0, 188, 212, 0.2);
+            color: var(--accent-reseller);
+            border: 1px solid var(--accent-reseller);
+        }
+
+        .action-btn:active, .primary-btn:active, .reseller-btn:active {
+            transform: scale(0.98);
+        }
+
+        .tab-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-card);
+            border-radius: 50px;
+            padding: 8px;
+            display: flex;
+            gap: 6px;
+            width: 90%;
+            max-width: 360px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 100;
+        }
+
+        .tab-item {
+            flex: 1;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 25px;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .tab-item.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--text-main);
+        }
+
+        #error-msg {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--accent-danger);
+        }
+
+        /* Secciones de control visual */
+        #login-screen { display: block; }
+        #panel-principal { display: none; }
+        #panel-master-admin { display: none; } /* Solo visible para ti (Master) */
+        #panel-reseller-login { display: block; } /* Área de acceso para revendedores */
+        #panel-reseller-tools { display: none; } /* Herramientas de generación del revendedor */
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header-area">
+            <div class="os-pro">iOS PRO</div>
+            <div class="project-x">SANTANA XIT</div>
+            <div class="mod-title">Panel de Control & Distribución</div>
+        </div>
+
+        <!-- 1. PANTALLA DE CLIENTE: LOGIN CON KEY DE ACCESO -->
+        <div id="login-screen" class="glass-card">
+            <div class="mem-header">ACCESO CLIENTE</div>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">Ingresa tu key de cliente para usar las modificaciones.</p>
+            <input type="text" id="key-input" placeholder="Ej: CLIENT-XXXX">
+            <button class="action-btn primary-btn" style="margin-top: 12px;" onclick="verificarKey()">Entrar al Panel</button>
+            <p id="error-msg"></p>
+        </div>
+
+        <!-- 2. PANTALLA PRINCIPAL DE MODS (Clientes) -->
+        <div id="panel-principal">
+            <div class="glass-card mods-section">
+                <div class="mod-item">
+                    <span class="mod-label">AIM BODY</span>
+                    <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+                </div>
+                <div class="mod-item">
+                    <span class="mod-label">AIM CHEST</span>
+                    <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+                </div>
+                <div class="mod-item">
+                    <span class="mod-label">AIM NECK</span>
+                    <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+                </div>
+                <div class="mod-item">
+                    <span class="mod-label">AIM ROB</span>
+                    <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+                </div>
+                <div class="mod-item">
+                    <span class="mod-label">AIM DRAG</span>
+                    <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+                </div>
+            </div>
+
+            <div class="glass-card membership-section">
+                <div class="mem-header">MEMBRESÍA ACTIVA PRO</div>
+                <div class="info-row">
+                    <span>Clave</span>
+                    <span id="key-activa-txt" class="info-value">-</span>
+                </div>
+                <div class="info-row">
+                    <span>Tiempo restante</span>
+                    <span id="tiempo-restante-txt" class="info-value">Calculando...</span>
+                </div>
+                <div class="info-row">
+                    <span>Fecha expiración</span>
+                    <span id="fecha-exp-txt" class="info-value">-</span>
+                </div>
+                <div class="info-row">
+                    <span>Estado</span>
+                    <span id="estado-key-txt" class="info-value status-active">Activa ✓</span>
+                </div>
+                <button class="action-btn" onclick="desactivarKey()">Cerrar Sesión</button>
+            </div>
+        </div>
+
+        <!-- 3. ACCESO / GENERADOR PARA REVENDEDORES (RESELLERS) -->
+        <div class="glass-card" id="panel-reseller-login">
+            <div class="reseller-header">🤝 ACCESO REVENDEDORES</div>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">¿Eres revendedor autorizado? Inicia sesión aquí.</p>
+            <input type="password" id="reseller-pass-input" placeholder="Contraseña de Revendedor" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-card); background: rgba(0,0,0,0.3); color: white; font-size: 14px; outline: none; margin-bottom: 10px;">
+            <button class="action-btn reseller-btn" onclick="verificarReseller()">Entrar como Revendedor</button>
+        </div>
+
+        <!-- HERRAMIENTAS DE GENERACIÓN DEL REVENDEDOR (Oculto hasta loguearse como revendedor) -->
+        <div class="glass-card reseller-section" id="panel-reseller-tools">
+            <div class="reseller-header">⚡ GENERADOR DE KEYS (RESELLER)</div>
+            <div class="info-row" style="flex-direction: column; gap: 5px;">
+                <span>Duración de la Key para tu cliente:</span>
+                <select id="duracion-key-reseller">
+                    <option value="1">1 Día</option>
+                    <option value="7" selected>7 Días</option>
+                    <option value="30">30 Días</option>
+                </select>
+            </div>
+            <button class="action-btn reseller-btn" style="margin-top: 10px;" onclick="generarKeyReseller()">Generar Key de Cliente</button>
+            <div style="margin-top: 10px;">
+                <span style="font-size: 12px; color: var(--text-muted);">Key creada:</span>
+                <input type="text" id="key-output-reseller" readonly placeholder="Tu key aparecerá aquí..." style="font-weight: bold; color: var(--accent-reseller); text-align: center;">
+            </div>
+            <button class="action-btn" style="margin-top: 10px; background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); color: #fff;" onclick="cerrarSesionReseller()">Salir del Panel Reseller</button>
+        </div>
+
+        <!-- 4. PANEL MASTER EXCLUSIVO (SOLO PARA TI) -->
+        <div class="glass-card admin-section" id="panel-master-admin">
+            <div class="admin-header">👑 PANEL MASTER (SANTANA)</div>
+            <p style="font-size: 12px; color: var(--text-muted);">Control total: Aquí puedes crear claves especiales o gestionar el sistema completo.</p>
+            <div class="info-row" style="flex-direction: column; gap: 5px; margin-top: 8px;">
+                <span>Crear Key Maestra / Administrador:</span>
+                <select id="duracion-master">
+                    <option value="30" selected>30 Días (Mes)</option>
+                    <option value="365">1 Año (Permanente)</option>
+                </select>
+            </div>
+            <button class="action-btn primary-btn" style="margin-top: 10px;" onclick="generarKeyMaster()">Generar Key Master</button>
+            <div style="margin-top: 10px;">
+                <input type="text" id="key-output-master" readonly placeholder="Key Master generada..." style="font-weight: bold; color: #b388ff; text-align: center;">
+            </div>
+        </div>
+
+    </div>
+
+    <nav class="tab-bar">
+        <a href="#" class="tab-item active">Home</a>
+        <a href="#" class="tab-item">Free Fire</a>
+        <a href="#" class="tab-item">FF MAX</a>
+        <a href="#" class="tab-item">Perfil</a>
+        <a href="#" class="tab-item">Soporte</a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
