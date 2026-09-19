@@ -7,18 +7,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          
-      - name: Build Web App Artifacts
+      - name: Prepare Web Bundle
         run: |
-          echo "Generando archivos de envoltura para iOS..."
           mkdir -p ios-output
-          cp -r * ios-output/
+          cp -r index.html manifest.json icon.png assets ios-output/ || cp -r * ios-output/
           
-      - name: Upload iOS Package Artifact
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Santana-XIT-iOS
