@@ -1,7 +1,7 @@
 // ==========================================
 // CONFIGURACIÓN DE SEGURIDAD Y CONTRASEÑAS
 // ==========================================
-const MASTER_PASSWORD_SECRETA = "SANTANA-MASTER-2026"; // 👑 Tu contraseña secreta (Solo tú la conoces)
+const MASTER_PASSWORD_SECRETA = "SANTANA-ELMEJOR-2026"; // 👑 Tu contraseña secreta (Solo tú la conoces)
 const RESELLER_PASSWORD_SECRETA = "REVENDEDOR-XIT-2026"; // 🤝 Contraseña que le das a tus revendedores
 
 // Clave inicial de prueba para clientes
