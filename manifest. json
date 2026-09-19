@@ -1,0 +1,9 @@
+{
+  "name": "SANTANA XIT",
+  "short_name": "SANTANA XIT",
+  "start_url": "/PROYECTOS-SANTANA-XIT/",
+  "display": "standalone",
+  "background_color": "#0f0f13",
+  "theme_color": "#00e676",
+  "icons": []
+}
