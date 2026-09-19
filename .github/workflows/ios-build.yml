@@ -7,10 +7,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       
-      - name: Prepare Web Bundle
+      - name: Create Output Folder
         run: |
           mkdir -p ios-output
-          cp -r index.html manifest.json icon.png assets ios-output/ || cp -r * ios-output/
+          find . -maxdepth 1 ! -name 'ios-output' ! -name '.' -exec cp -r {} ios-output/ \;
           
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
